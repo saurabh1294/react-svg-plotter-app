@@ -20,7 +20,7 @@ export default class App extends React.Component {
           <textarea onChange={this.captureCommand.bind(this)} 
           placeholder={this.svgCommand} rows={10} cols={100} />
           <div>
-            <button onClick={this.drawSvg.bind(this)}>Plot SVG</button>
+            <button className="button" onClick={this.drawSvg.bind(this)}>Plot SVG</button>
           </div>
           {this.state.showSvg && <SvgPlotter command={this.svgCommand}/>}
         </div>
