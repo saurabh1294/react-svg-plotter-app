@@ -19,19 +19,7 @@ export default class SvgPlotter extends React.Component <any> {
         </div>
       );
     }
-
-    plotSvg(points: any) {
-        var svgns = "http://www.w3.org/2000/svg";
-            let svg = document.getElementById('circle') as any;
-            var shape = document.createElementNS(svgns, "circle");
-            shape.setAttributeNS(null, "cx", points[1]);
-            shape.setAttributeNS(null, "cy", points[2]);
-            shape.setAttributeNS(null, "r",  points[3]);
-            shape.setAttributeNS(null, "fill", "green");
-            svg.appendChild(shape);
-        
-    }
-
+    
     parseAndRunSvgPlotterCommand(lines: any) {
         let points = [];
         let svgns = "http://www.w3.org/2000/svg";
