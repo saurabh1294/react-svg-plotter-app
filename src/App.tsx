@@ -22,6 +22,8 @@ export default class App extends React.Component {
           <div>
             <button className="button" onClick={this.drawSvg.bind(this)}>Plot SVG</button>
           </div>
+          <hr/>
+          <h3>SVG will be plotted below: </h3>
           {this.state.showSvg && <SvgPlotter command={this.svgCommand}/>}
         </div>
       );
