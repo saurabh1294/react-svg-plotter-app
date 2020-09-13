@@ -10,16 +10,16 @@ export default class SvgPlotter extends React.Component <any> {
     render() {
       return (
         <div>
-            <svg id="polygon" width="250" height="250">
+            <svg ref="polygon" id="polygon" width="250" height="250">
             </svg>
-            <svg id="circle" width="250" height="250">
+            <svg ref="circle" id="circle" width="250" height="250">
             </svg>
-            <svg id="rectangle" width="250" height="250">
+            <svg ref="rectangle" id="rectangle" width="250" height="250">
             </svg>
         </div>
       );
     }
-    
+
     parseAndRunSvgPlotterCommand(lines: any) {
         let points = [];
         let svgns = "http://www.w3.org/2000/svg";
@@ -33,7 +33,8 @@ export default class SvgPlotter extends React.Component <any> {
           switch(line[0]?.toUpperCase()) {
             case 'C':
                 console.log('drawing circle', points, this.props);
-                svg = document.getElementById('circle') as any;
+                svg = this.refs.circle as any;
+                // document.getElementById('circle') as any;
                 var shape = document.createElementNS(svgns, "circle");
                 shape.setAttributeNS(null, "cx", points[1]);
                 shape.setAttributeNS(null, "cy", points[2]);
@@ -44,7 +45,8 @@ export default class SvgPlotter extends React.Component <any> {
   
             case 'P':
                 console.log('drawing Polygon', points, this.props);
-                svg = document.getElementById('polygon') as any;
+                svg = this.refs.polygon as any;
+                // document.getElementById('polygon') as any;
                 let ppoints = points.splice(1).join(" ").split(",").join(",");
                 let polygon = document.createElementNS(svgns, 'polygon');
                 polygon.setAttributeNS(null, 'points', ppoints.trim());
@@ -54,7 +56,8 @@ export default class SvgPlotter extends React.Component <any> {
   
             case 'R':
                 console.log('drawing Rectangle', points, this.props);
-                svg = document.getElementById('rectangle') as any;
+                svg = this.refs.rectangle as any;
+                // document.getElementById('rectangle') as any;
                 let rect = document.createElementNS(svgns, 'rect');
                 rect.setAttributeNS(null, 'x', points[1]);
                 rect.setAttributeNS(null, 'y', points[2]);
